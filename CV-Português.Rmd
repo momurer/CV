@@ -1,0 +1,142 @@
+---
+name: Monique
+surname: Murer
+position: "Estudante de graduação"
+address: "São Paulo, Brasil"
+phone: +55 11 999355548
+email: "monique.murer@fgv.br"
+twitter: moniquemurer
+github: momurer
+linkedin: monique-murer
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+headcolor: 1f75fe
+aboutme: "Estudante automotivada interessada em assuntos globais e política comparada, especialmente em relação a movimentos sociais e direitos humanos. Atualmente trabalho em meu projeto de iniciação científica, que busca responder se o comportamento eleitoral atual no Brasil resulta de políticas distributivas ou identitárias. Tenho pontos fortes em pesquisa e coordenação de atividades, bem como sou reconhecida por minha escrita analítica. Focada em comunicação não violenta e no meu crescimento profissional."
+docname: CV
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+
+require(xfun)
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+xfun::pkg_attach2(packages, message = FALSE)
+
+#### Data
+
+honours <- tribble(
+  ~area, ~accomplishment, ~year, ~where, ~detail,
+  "Moção de Louvor", "Reconhecimento ao esforço e dedicação nas Olímpiadas de Filosofia", 2018, "Brasília, Brasil", "Concedida pela Comissão de Educação da Câmara dos Deputados",
+  "Olimpíada Internacional de Filosofia", "Menção honrosa", 2018, "Bar, Montenegro", NA,   
+  "Olimpíada Iberoamericana de Filosofia", "Medalha de prata", 2018, "São Paulo, Brasil", NA,
+  "Attainment Award em História Moderna", "Escola de verão da Universidade de Oxford", 2016, "Oxford, Reino Unido", NA,
+  "Attainment Award em Política e Relações Internacionais", "Escola de verão da Universidade de Oxford", 2016, "Oxford, Reino Unido", NA
+)
+
+skills <- tribble(
+  ~area, ~skills,
+  "Análise de dados e programação", "R Studio", 
+  "Comunicação não-violenta", "Workshop realizado em 2020",
+  "Idiomas", "Inglês e português fluentes; Espanhol intermediário",
+  "Falar em público", "Experiência com debates competitivos em nível escolar e universitário", 
+  "Pacote Microsoft Office", "Excel, Outlook, OneNote, PowerPoint, Word",
+  "Pesquisa e análise", "Antecedentes em programas de pesquisa acadêmica e redação analítica",
+  "Planejamento", "Atividades de coordenação com a UNIC Rio e organizações estudantis",
+)
+
+
+edu <- tribble(
+  ~degree, ~startYear, ~endYear, ~inst, ~where, ~detail,
+  "Bacharel em Relações Internacionais", 2019, 2023, "Fundação Getúlio Vargas", "São Paulo, Brasil", NA,
+  "Populismo em perspectiva comparada", 2021, 2021, "Universidad Torcuato Di Tella", "Concluído remotamente", "Programa de intercâmbio",
+  "Técnicas de persuasão e negociação", 2021, 2021, "Fundação Getúlio Vargas", "Concluído remotamente", "Curso de férias",
+  "Ensino médio completo", 2016, 2018, "Escola Móbile", "São Paulo, Brasil", NA
+)
+
+experience <- tribble(
+  ~title, ~unit, ~startMonth, ~startYear, ~endMonth, ~endYear, ~where, ~detail,
+  "Iniciação científica", "Grupo de Desenvolvimento Internacional da Fundação Getúlio Vargas", "Fevereiro", 2021, "Presente", NA, "São Paulo, Brasil", "Pesquisa em andamento com foco em comportamento político",
+  "Representante da Convenção-Quadro das Nações Unidas sobre Mudança do Clima", "Reunião de alto nível sobre clima e desenvolvimento sustentável", "Março", 2019, "Abril", 2019, "Cidade de Nova York, Nova York", "Representante da organização oficial juvenil da UNFCCC na Assembleia Geral"
+)
+
+vol <- tribble(
+  ~title, ~unit, ~startMonth, ~startYear, ~endMonth, ~endYear, ~where, ~detail,
+  "Entidade universitária", "Fundação Getúlio Vargas", "Março", 2019, "Fevereiro", 2020, "São Paulo, Brasil", "Criação e coordenação da entidade 'FGV Global', e estabelecimento de seus projetos iniciais",
+  "Entidade universitária", "Fundação Getúlio Vargas", "Março", 2019, "Fevereiro", 2020, "São Paulo, Brasil", "Negociação de parceria com o Itamaraty",
+  "Organização de MUNs (debates no modelo das Nações Unidas)", "Centro de Informações das Nações Unifas", NA, 2018, NA, 2019, "Rio de Janeiro, Brasil", "Coordenação de conhecimento compartilhado de MUNs junto à UNIC Rio",
+  "Organização de MUNs (debates no modelo das Nações Unidas)", "Centro de Informações das Nações Unifas", NA, 2018, NA, 2019, "Rio de Janeiro, Brasil", "Criação de uma plataforma online para divulgar debates MUN como plataforma educacional em todo o país",
+  "Trabalho voluntário", "Projeto Quixote", "Março", 2018, "Março", 2019, "São Paulo, Brasil", "Ensino de inglês para jovens de baixa renda"
+)
+
+
+```
+
+# Educação
+
+```{r EDUCATION}
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Experiência
+
+```{r EXPERIENCE}
+experience %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Projetos pessoais e voluntariado
+
+```{r VOLUNTEERING}
+vol %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+)
+```
+
+# Habilidades e competências
+
+```{r SKILLS}
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+```
+
+# Honras
+
+```{r HONOURS}
+honours %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```

@@ -1,0 +1,119 @@
+---
+name: Monique
+surname: Murer
+position: "Undergraduate student"
+address: "São Paulo, Brazil"
+phone: +55 11 999355548
+email: "monique.murer@fgv.br"
+twitter: moniquemurer
+github: momurer
+linkedin: monique-murer
+output: vitae::awesomecv
+headcolor: 1f75fe
+docname: Resumé
+aboutme: "Self-motivated student interested in global affairs and comparative politics. Key strenghts on researching and coordinating activities. Accomplishments on analytical thinking and writing. Focused on non‑violent communication and professional growth."
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+
+require(xfun)
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+xfun::pkg_attach2(packages, message = FALSE)
+
+#### Data
+
+honours <- tribble(
+  ~area, ~accomplishment, ~year, ~where, ~detail,
+  "Motion of Praise", "Recognition of the effort, dedication and success at the Philosophy Olympiads", 2018, "Brasília, Brazil", "Granted by the Chamber of Deputies' Education Committee",
+  "International Philosophy Olympiad", "Honorable mention", 2018, "Bar, Montenegro", NA,   
+  "Iberoamerican Philosophy Olympiad", "Silver medal", 2018, "São Paulo, Brazil", NA,
+)
+
+skills <- tribble(
+  ~area, ~skills,
+  "Languages", "Fluent English and Portuguese; Intermediate Spanish",
+  "Microsoft Office", "Excel, Outlook, OneNote, PowerPoint, Word",
+  "Non-violent communication", "Workshop completed in 2020",
+  "Planning", "Coordination activities employed with UNIC Rio and student organizations",
+  "Programming", "R Studio", 
+  "Public speaking", "Experience with school and college-level competitive debates",
+  "Research and analysis", "Background in academic research and analytical writing"
+)
+
+edu <- tribble(
+  ~degree, ~startYear, ~endYear, ~inst, ~where, ~detail,
+  "Bachelor in International Relations", 2019, 2023, "Fundação Getúlio Vargas", "São Paulo, Brazil", NA,
+  "Populism in comparative perspective", 2021, 2021, "Universidad Torcuato Di Tella", "Completed remotely", "Exchange program",
+  "Negotiation and persuasion techniques", 2021, 2021, "Fundação Getúlio Vargas", "Completed remotely", "Intensive vacation course",
+)
+
+experience <- tribble(
+  ~title, ~unit, ~startMonth, ~startYear, ~endMonth, ~endYear, ~where, ~detail,
+  "Undergraduate research", "Fundação Getúlio Vargas' International Development working group", "February", 2021, "Present", NA, "São Paulo, Brazil", "Ongoing research focused on political behaviour",
+  "Student organization", "Fundação Getúlio Vargas", "March", 2019, "February", 2020, "São Paulo, Brazil", "Helped to create the student organization 'FGV Global', and established its initial projects",
+  "Student organization", "Fundação Getúlio Vargas", "March", 2019, "February", 2020, "São Paulo, Brazil", "Negotiated a partnership with Brazil’s Ministry of Foreign Affairs",
+    "United Nations Framework Convention on Climate Change representative", "High Level Meeting on Climate and Sustainable Development", "March", 2019, "April", 2019, "New York City, New York", "Represented the official youth organization of the UNFCCC at the General Assembly",
+  "Organizing MUNs (Model United Nations debates)", "United Nations Information Centre", NA, 2018, NA, 2019, "Rio de Janeiro, Brazil", "Coordinated shared knowledge of MUNs alongside UNIC Rio", 
+  "Organizing MUNs (Model United Nations debates)", "United Nations Information Centre", NA, 2018, NA, 2019, "Rio de Janeiro, Brazil", "Established an online platform to spread MUN debates as an educational platform across the country"
+)
+
+```
+
+# Skills and competences
+
+```{r SKILLS}
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+```
+
+# Experience
+
+```{r EXPERIENCE}
+experience %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Education
+
+```{r EDUCATION}
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Honours
+
+```{r HONOURS}
+honours %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
