@@ -11,7 +11,7 @@ linkedin: monique-murer
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: 1f75fe
 output: vitae::awesomecv
-aboutme: "Self-motivated student interested in global affairs and comparative politics, especially regarding social movements and human rights. Currently working on my undergraduate research project, which seeks to answer whether current voting behaviour in Brazil results from distribute or identity politics. Key strenghts on researching and coordinating activities. Accomplishments on analytical thinking and writing. Focused on non‑violent communication and professional growth."
+aboutme: 
 docname: CV
 ---
 
@@ -46,7 +46,7 @@ skills <- tribble(
   "Microsoft Office", "Excel, Outlook, OneNote, PowerPoint, Word",
   "Non-violent communication", "Workshop completed in 2020",
   "Planning", "Coordination activities employed with UNIC Rio and student organizations",
-  "Programming", "R Studio", 
+  "Programming", "Intermediate R Studio and Python", 
   "Public speaking", "Experience with school and college-level competitive debates",
   "Research and analysis", "Background in academic research programme and analytical writing"
 )
@@ -55,6 +55,7 @@ edu <- tribble(
   ~degree, ~startYear, ~endYear, ~inst, ~where, ~detail,
   "Bachelor in International Relations", 2019, 2023, "Fundação Getúlio Vargas", "São Paulo, Brazil", NA,
   "Populism in comparative perspective", 2021, 2021, "Universidad Torcuato Di Tella", "Completed remotely", "Exchange program",
+  "Unlocking Investment and Finance in Emerging Markets and Developing Economies (EMDEs)", 2021, 2021, "World Bank", "Completed remotely", NA,
   "Negotiation and persuasion techniques", 2021, 2021, "Fundação Getúlio Vargas", "Completed remotely", "Intensive vacation course",
 )
 
