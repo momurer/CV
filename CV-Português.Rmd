@@ -11,7 +11,7 @@ linkedin: monique-murer
 date: "`r format(Sys.time(), '%B %Y')`"
 output: vitae::awesomecv
 headcolor: 1f75fe
-aboutme: "Estudante automotivada interessada em assuntos globais e política comparada, especialmente em relação a movimentos sociais e direitos humanos. Atualmente trabalho em meu projeto de iniciação científica, que busca responder se o comportamento eleitoral atual no Brasil resulta de políticas distributivas ou identitárias. Tenho pontos fortes em pesquisa e coordenação de atividades, bem como sou reconhecida por minha escrita analítica. Focada em comunicação não violenta e no meu crescimento profissional."
+aboutme: 
 docname: CV
 
 ---
@@ -43,7 +43,7 @@ honours <- tribble(
 
 skills <- tribble(
   ~area, ~skills,
-  "Análise de dados e programação", "R Studio", 
+  "Análise de dados e programação", "R Studio e Python intermediários", 
   "Comunicação não-violenta", "Workshop realizado em 2020",
   "Idiomas", "Inglês e português fluentes; Espanhol intermediário",
   "Falar em público", "Experiência com debates competitivos em nível escolar e universitário", 
@@ -55,8 +55,9 @@ skills <- tribble(
 
 edu <- tribble(
   ~degree, ~startYear, ~endYear, ~inst, ~where, ~detail,
-  "Bacharel em Relações Internacionais", 2019, 2023, "Fundação Getúlio Vargas", "São Paulo, Brasil", NA,
+  "Bacharelado em Relações Internacionais", 2019, 2023, "Fundação Getúlio Vargas", "São Paulo, Brasil", NA,
   "Populismo em perspectiva comparada", 2021, 2021, "Universidad Torcuato Di Tella", "Concluído remotamente", "Programa de intercâmbio",
+  "Unlocking Investment and Finance in Emerging Markets and Developing Economies (EMDEs)", 2021, 2021, "Banco Mundial", "Concluído remotamente", NA,
   "Técnicas de persuasão e negociação", 2021, 2021, "Fundação Getúlio Vargas", "Concluído remotamente", "Curso de férias",
   "Ensino médio completo", 2016, 2018, "Escola Móbile", "São Paulo, Brasil", NA
 )
